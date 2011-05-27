@@ -3,7 +3,7 @@ module OfxParser
 
     class_extension do
       def monetary_vars(*methods) #:nodoc:
-        @@monies += methods
+        @monies += methods
       end
       def monies
         @monies || []
