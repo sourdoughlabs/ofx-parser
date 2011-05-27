@@ -1,11 +1,12 @@
 module OfxParser
   module MonetarySupport
 
-    @@monies ||= []
-
     class_extension do
       def monetary_vars(*methods) #:nodoc:
         @@monies += methods
+      end
+      def monies
+        @monies || []
       end
     end
 
@@ -157,12 +158,12 @@ module OfxParser
     attr_accessor :code, :severity, :message
 
     CODES = {
-      '0'	    => 'Success',
-      '2000'	=> 'General error',
-      '15000'	=> 'Must change USERPASS',
-      '15500'	=> 'Signon invalid',
-      '15501'	=> 'Customer account already in use',
-      '15502'	=> 'USERPASS Lockout'
+      '0'     => 'Success',
+      '2000'  => 'General error',
+      '15000' => 'Must change USERPASS',
+      '15500' => 'Signon invalid',
+      '15501' => 'Customer account already in use',
+      '15502' => 'USERPASS Lockout'
     }
 
     def code_desc
